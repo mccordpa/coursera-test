@@ -1,0 +1,33 @@
+--Anatomy of CSS Rules--
+
+-Example:
+
+p {
+   color: blue;
+  }
+
+In the above example, p (the HTML paragraph tag) is a Selector, inside the brackets is the CSS Declaration, 
+which consists of the Property (ie, color) and the Value (ie, blue).
+So all of the information in the CSS Declaration will be applied to all of the paragraphs in the HTML doc.
+
+-The collection of all CSS rules is called a Style Sheet.
+
+
+--Element, Class, and ID Selectors--   (START AT 2:48)
+
+-Element selector:
+
+p {
+   color: blue;
+  }
+It is 'p' in the above. To call the Element selector in the HTML document, you just specify the element, 
+like: <p>....</p>
+
+-Class selector:
+
+.blue {
+	color: blue;
+      }
+
+In the above, .blue is the Class Name. To call the Class selector in the HTML document you have to do the
+following: <p class="blue">....</p>
