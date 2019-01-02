@@ -1,0 +1,25 @@
+-+-+Week 1 notes+-+-
+
+-<p> is an Element (IOW, p is an element, just like title and/or src is an element). 
+
+-Every HTML Element can have predefined Attributes. For example: <p id="myId"></p>. In this example, id is an Attribute Name and myId is an Attribute Value.
+
+-Attributes are a name-value pair.
+
+-The head Element contains important metadata information, particularly the title Element and the meta Element.
+
+-The title Element is required.
+
+-The body Element (Tag) is the root of all content that is visible to the user.
+
+-"Content Model" refers to the rules explaining which elements are allowed to be nested within other elements.
+	-"Block-level Elements" 1)render to begin on a new line, and 2) they may contain inline or other block-level elements.  --> Flow Content
+	-"Inline Elements" 1)render on the same line, and 2) may contain other inline eleents. --> Phrasing Content
+	-The div Element is the most generic block-level element, while the span Element is the most generic inline element.
+
+-All HTML documents should include a h1 Element (Tag).
+
+-Links are created using the a Element, with an Attribute href (href stands for hypertext reference). The Value of href can either be
+a relative or absolute url. A title Attribute should also be assigned to the a Element. The content between the opening and closing 
+a Tags is the content on which you'll be able to click to go to the linked page.
+
