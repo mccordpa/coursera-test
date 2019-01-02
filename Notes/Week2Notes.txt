@@ -13,7 +13,7 @@ So all of the information in the CSS Declaration will be applied to all of the p
 -The collection of all CSS rules is called a Style Sheet.
 
 
---Element, Class, and ID Selectors--   (START AT 2:48)
+--Element, Class, and ID Selectors--
 
 -Element selector:
 
@@ -31,3 +31,14 @@ like: <p>....</p>
 
 In the above, .blue is the Class Name. To call the Class selector in the HTML document you have to do the
 following: <p class="blue">....</p>
+
+-ID selector:
+
+#name {
+	color: blue;
+      }
+
+To call the ID selector in the HTML document you have to do the following: <div id="name">....</div>
+
+
+--Combining Selectors-- (start at Combining Selectors)
