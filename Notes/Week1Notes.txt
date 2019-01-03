@@ -23,3 +23,7 @@
 a relative or absolute url. A title Attribute should also be assigned to the a Element. The content between the opening and closing 
 a Tags is the content on which you'll be able to click to go to the linked page.
 
+-Commenting out in HTML is done by "<!--" and then closed by "-->".
+
+-Images are brought into a website using the img Element. The src Attribute is used to point to the url where the image is located.
+The width and height Attributes are also used to specify the size of the image.

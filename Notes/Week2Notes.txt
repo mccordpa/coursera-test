@@ -12,6 +12,11 @@ So all of the information in the CSS Declaration will be applied to all of the p
 
 -The collection of all CSS rules is called a Style Sheet.
 
+-In some of the examples given in the class, the CSS styling is placed directly in the head section (head
+Element) of the HTML document and is positioned between opened and closed style Elements (ie, <style> and 
+</style>). In the real world, when actually designing a website, the CSS style sheet should go in a
+separate document.
+
 
 --Element, Class, and ID Selectors--
 
@@ -30,7 +35,8 @@ like: <p>....</p>
       }
 
 In the above, .blue is the Class Name. To call the Class selector in the HTML document you have to do the
-following: <p class="blue">....</p>
+following: <p class="blue">....</p>. See that for the p Element, we needed to also have an Attribute called
+class to specify that we wanted the Class selector applied to the p Element.
 
 -ID selector:
 
@@ -38,7 +44,262 @@ following: <p class="blue">....</p>
 	color: blue;
       }
 
-To call the ID selector in the HTML document you have to do the following: <div id="name">....</div>
+To call the ID selector in the HTML document you have to do the following: <div id="name">....</div>.
+When using the ID selector, what you specify in the CSS sheet (#name in this case) is a Value located
+somewhere in the HTML document. So in this case, you're specifying the Value of an Attribute-Value pair.
 
 
---Combining Selectors-- (start at Combining Selectors)
+--Combining Selectors--
+
+-Ways to combine selectors:
+
+-The Class-Element combo:
+p.big {
+	font-size: 20px;
+}
+In the above, every p Element with a Class equal to "big" will have the style applied. (This is an Element
+selector combined with a Class selector.)
+
+-The Child Selector combo:
+article > p {
+	color: blue;
+}
+In this case we have a Selector followed by a angled bracket followed by another Selector. This says that every
+p Element that is a direct child of an article Element will have the specified style.
+
+-The Descendant Selector combo:
+article p{
+	color: blue;
+}
+In this case we have a Selector followed by a space then another Selector. This says that every p Element that is 
+within an article Element at ANY level will have the specified style.
+
+-Note that even though the above examples were used using Element selectors, combos can be used with Class and ID
+Selectors as well.
+
+
+--Pseudo-Class Selectors--
+
+-Pseudo-Class selectors are specified by specifying:
+selector:pseudo-class {
+	...
+}
+
+-Here are the pseudo-classes that will be covered in this lecture: link, visited, hover, active, nth-child(...)
+
+-Styling links (and other Elements) can be complicated because links have States. So to adequately style them, we need
+to use pseudo-classes. Here is an example of targeting a link that has not been visited and one that has:
+
+a:link, a:visited {
+	text-decoration: none;
+	background-color: green
+	}
+
+-Here is an example of targeting a link when you hover over it.
+a:hover, a:active {
+	backgound-color: red;
+	}
+-The pseudo-classes are where we have an Element followed by a colon followed by a pseudo-class.
+
+-The nth-child() pseudo-class can be used when you're targeting a certain item in a list.
+
+
+--Style Placement--
+
+-Up to this point, the CSS style has been specified in the head Element, within the style Element.
+Style can also be specified directly on the Element within the HTML code. This is called "in-line
+styling." It is the least reusable method. But it is also the least reusable styling and should be stayed
+away from.
+
+-External Style Sheets allow us to link to a CSS sheet from within an HTML document. This is often
+done by specifying in the head Element a link to a stylesheet.
+
+-External Style Sheets are just lists of CSS styles.
+
+-Throughout the class, we'll continue to place the CSS styling in the HTML document within the head and
+style Elements. However, in the real world, we almost always want our style sheets to be external (to
+do this you must do something like <link rel="stylesheet" href="style.css"> in the <head> Element.
+
+
+--Conflict Resolution--
+
+-Important concepts to understand how conflicts are resolved: Origin, Merge, Inheritance, Specificity.
+-Origin Precedence - The last declartion wins.
+-Declartions Merge - This occurs, for example, if text color is specified separately from text background,
+then both the text color and text background specifications will be applied. 
+-Inheritance - All the children (or children of children) of a Element where the property is specified will
+have the property of the Element where the property is applied.
+	-The body Element is THE top Element in the HTML document. So if you want something applied to all
+	p Elements within a body Element, it makes sense to apply this styling to the body Element.
+-Specificity - The most specific Selector combination wins.
+	-Specifying "style" Attribute is most specific, then using ID Selector, then using Class Selector, 
+	then using Element selector.
+
+
+--Styling Text--
+
+-This video provides a helpful link to a webpage that specifies font styling.
+
+-With relative font sizing, there are two units of sizing that are relevant: percent, and ems.
+	-Percent: Take the default browser size and increase by percentage specified.
+	-Em: A unit a measurement that is equivalent to the width of the letter 'M' in the 
+	particular font that is being used (it's a relative font).
+	-More common to use ems when talking about relative sizes.
+
+
+--The Box Model--
+
+-In HTML every Element is considered a box.
+-Besides the actual content, each box consists of padding, border, and margins.
+-The Box Model refers to the elements that make up these boxes as well as the rules that specify how these
+boxes can be modified. The BM also refers to how width and height are calculated.
+-Rather than letting the content within the box dictate how large the box is, we can set the size of the 
+box with width and height.
+-When specifying the width of a box, we need to understand that the width may actually be larger than what
+we specify. This is because we also need to sum the padding of the box as well as the border of the box.
+-SO, if a box has a specified width of 300px, a padding of 10px on all sides, and a border of 5px on all
+sides, then its actual width will be 330px (300 + 10 + 10 + 5 + 5).
+-Using "border-box" and "content-box" as the Value of the box-sizing Attribute is really helpful in 
+adjusting the size of the box. If we set box-sizing to "border-box", then we're guaranteed that the box
+(including content, padding, and border will equal the specified width, which in this case is 300px). 
+However, if we set box-sizing to "content-box", then the content box will be equal to the width value,
+but then we'll also have the padding and border values added to the overall box (this is the 330px
+example from above).
+-ALWAYS STAY WITH THE BOX-SIZING OF BORDER-BOX.
+-KNOW that box-sizing is not inherited. So we can't set "box-sizing: border-box" in the body Element and then
+expect it to be inherited by all child Elements. How do we get around this?
+-To get around this, we need to use the * Element. What * does is it applies the specified properties to 
+every Element in the document. Therefore,
+* {
+	box-sizing: border-box;
+}
+will apply the same box sizing across the entire HTML page.
+-MARGINS that are left and right are cumulative. So if we have a box on the left with a margin of 40px and a box
+on the right with a margin of 50px, then the cumulative margin will be 90px.
+-MARGINS for Elements that are placed on top and below of each other are not cumulative. In this case, if the 
+margin of box on top was 20px and the margin of the box on bottom was 30px, then the cumulative margins would
+be 30px because the margins collapse and the largest margin wins.
+-If we have content within our box that spills out of the box because the specified height of the box does not
+allow it all to fit, then we need to use the overflow Attribute within the div Element where the box is
+specified.
+-If we set the overflow Attribute to have a Value of auto, then we get a scroll bar to help us see all of the 
+content within the box.
+
+
+--The Background Property--
+
+-The background-image Attribute will set an image for the background rather than setting a color for the bg.
+
+
+--Position Elements by Floating--
+
+-THIS IS AN IMPORTANT LECTURE
+-When you float elements, the browser takes them out of the regular document flow. This is why the boxes in 
+the video shift up as if the first box isn't there any more. ALSO, when you float elements, the margins on
+them don't change, they retain their margins.
+-It's important to remember that when you float an object it is taken out of the document flow, which can
+lead to items bunching up on each other. 
+-To avoid this, the clear Attribute can be used with, for example, the left Value. This will ensure that 
+nothing floats to the left (in this case) of an object. (this is how we resume normal document flow)
+-When floating Elements can't fit on the same line, they end up floating to the next line.
+-Setting box-sizing to "border-box" is important to do because it helps to avoid elements getting floated onto
+the next line when they don't fit. REMEMBER, this is done like this:
+(in <style></style>
+* {
+	box-sizing: border-box;
+}
+
+
+--Relative and Absolute Element Positioning--
+
+-Static Positioning is basically the normal document flow (it's the default). Positioning offsets are ignored.
+
+-Relative Positioning allows an Element to be positioned relative to its position in normal document flow.
+
+-Positioning CSS (offset) properties work with relative positioning, but not with static positioning.
+
+-The Element that is set to relative positioning is not taken out of the normal document flow.
+
+-Absolute Positioning - All offsets (top, bottom, left, right) are relative to the position of the nearest
+ancestor which has positioning set on it, other than static.
+
+-Unlike with relative positioning, with absolute positioning the Element is taken out of its normal
+document flow.
+
+-Elements contained within a containing Element (like a <p> contained within a <div> Element) are shifted
+with the containing Element if the containing Element is repositioned. (this is true if the container 
+Element is relatively positioned)
+
+-Static positioning is default for all elements except HTML (HTML is relative positioning).
+
+-AGAIN, Relative positioning offsets the Element relative to its normal document flow position.
+
+-AGAIN, Absolute positioning is relative to closest ancestor which has positioning set to non-static value.
+
+
+--Media Queries--
+
+-Media queries allow you to group styles together and target them to devices.
+
+@media (max-width: 767px) {
+	p {
+	     color: blue;
+	}
+}
+
+-This media query starts with the Keyword @media. It is then followed by a Media Feature that resolves
+to either true or false. And then within the curly braces are the styles to apply. If the Media Feature
+resolves to true, then the style in the curly braces is applied.
+
+-Agreed upon width sizes to apply for screen size are: large device - greater than 1200px;
+medium device - between 992px and 1199px.
+
+
+--Responsive Design--
+
+-It's best to use percentages (proportional) to define the size of Elements.
+
+-A site's layout should adapt to the WIDTH (typically) of the device. But keep in mind that the visual
+delivery of the content might change.
+
+-The most common responsive layout is the 12-Column Grid Responsive Layout.
+
+-It's important to create a meta-tag specifying that the width and intial scale Attributes need to 
+recognize that we want the content to be displayed as specified in the code (IOW, we don't want the
+device to take its own liberties to adjust the content as it believes it should be adjusted).
+
+
+--Introduction to Twitter Bootstrap--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
