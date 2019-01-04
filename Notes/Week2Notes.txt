@@ -271,10 +271,27 @@ device to take its own liberties to adjust the content as it believes it should 
 
 --Introduction to Twitter Bootstrap--
 
+-Bootstrap is a CSS framework made by the engineers at Twitter. It is the most popular HTML, CSS, 
+and Javascript framework for developing responsive, mobile first projects on the web.
+
+-Bootstrap predefines a lot of CSS Elements.
+
+-To run Bootstrap, you must have jQuery.
 
 
+--The Bootstrap Grid System--
 
+-The bootstrap grid always needs to be inside a container (specified as <div class="container">).
+-The bootstrad grid also needs a row class (specified as <div class="row">). The row class creates
+horizontal groups of columns, which allows columns to collapse as groups.
+-The bootstrap grid also needs a column class definition (e.g., <div class="col-md-4>).
+	-Every bootstrap column class is defined using this template: col-SIZE-SPAN. SIZE is a screen
+	width range identifier (could be md for medium, lg for large (ie, 1200px and above), etc.). 
+	Columns will collapse below the specified width. SPAN is how many columns the Element should
+	span (Values can be 1 through 12).
 
+-Every grid system has to be inside a container class (see first bullet of this section above). AND
+all columns must be inside and Element with the .row Class.
 
 
 
